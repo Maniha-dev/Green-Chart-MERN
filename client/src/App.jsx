@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import {Route, Routes,useLocation } from 'react-router-dom'
 import Home from  './pages/Home'
-import Toaster from 'react-hot-toast'
+import {Toaster} from 'react-hot-toast'
 
 const App = () =>{
 

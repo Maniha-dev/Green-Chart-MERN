@@ -23,7 +23,7 @@ const fetchProducts = async () => {
 }
 
 // Add Product to Cart
-const addToCart = () => {
+const addToCart = (itemId) => {
     let cartData = structuredClone(cartItems);
 
     if(cartData[itemId]){
@@ -60,7 +60,7 @@ const removeFromCart = (itemId) => {
 }
 
     useEffect(()=>{
-        fetchProducts()
+        fetchProducts("")
     }, [])
 
 
