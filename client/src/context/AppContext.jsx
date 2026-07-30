@@ -14,8 +14,9 @@
     const [isSeller, setIsSeller] = useState(false);
     const [showUserLogin, setShowUserLogin] = useState(false);
     const [products, setProducts] = useState([]);
-     const [cartItems, setCartItems] = useState({});
 
+    const [cartItems, setCartItems] = useState({});
+    const [searchQuery, setSearchQuery] = useState({});
 
     // Fetch All Products
 const fetchProducts = async () => {
@@ -64,7 +65,7 @@ const removeFromCart = (itemId) => {
     }, [])
 
 
-     const value = {navigate, user, setUser, isSeller, setIsSeller, showUserLogin, setShowUserLogin, products, currency, addToCart,updateCartItem, removeFromCart, cartItems}
+     const value = {navigate, user, setUser, isSeller, setIsSeller, showUserLogin, setShowUserLogin, products, currency, addToCart,updateCartItem, removeFromCart, cartItems , searchQuery , setSearchQuery}
      return <AppContext.Provider value={value}>
          {children}
      </AppContext.Provider>
