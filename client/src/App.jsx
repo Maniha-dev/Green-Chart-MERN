@@ -9,6 +9,7 @@ import {useAppContext } from './context/AppContext'
 import AllProducts from './pages/AllProducts'
 import ProductCategory from "./pages/ProductCategory"
 import ProductDetail from './pages/ProductDetail'
+import Cart from './pages/Cart'
 
 const App = () =>{
 
@@ -27,6 +28,7 @@ const App = () =>{
                     <Route path='/products' element= {<AllProducts/>}/>
                     <Route path='/products/:category' element= {<ProductCategory/>}/>
                     <Route path='/products/:category/:id' element= {<ProductDetail/>}/>
+                    <Route path='/cart' element= {<Cart/>}/>
                 </Routes>
             </div>
             {!isSellerPath && <Footer/>}
