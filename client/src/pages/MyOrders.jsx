@@ -11,10 +11,10 @@ const MyOrders = () => {
     }
 
     useEffect(() => {
-        if (user) {
+        
             fetchMyOrders()
-        }
-    }, [user])
+        
+    }, [])
 
     return (
         <div className='mt-16 pb-16'>

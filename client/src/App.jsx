@@ -12,7 +12,7 @@ import ProductDetail from './pages/ProductDetail'
 import Cart from './pages/Cart'
 import AddAddress from './pages/AddAddress'
 import MyOrders from './pages/MyOrders'
-import SellerLogin from './pages/seller/SellerLogin'
+import SellerLogin from './components/seller/SellerLogin'
 import SellerLayout from './pages/seller/SellerLayout'
 import AddProduct from './pages/seller/AddProduct'
 import ProductList from './pages/seller/ProductList'
@@ -24,7 +24,7 @@ const App = () => {
     const { showUserLogin, isSeller } = useAppContext()
 
     return (
-        <div>
+        <div className="text-default min-h-screen text-gray-700 bg-white">
             {isSellerPath ? null : <Navbar />}
             {showUserLogin ? <Login /> : null}
             <Toaster />
@@ -39,7 +39,7 @@ const App = () => {
                     <Route path='/add-address' element={<AddAddress />} />
                     <Route path='/my-orders' element={<MyOrders />} />
                     <Route path="/seller" element={isSeller ? <SellerLayout /> : <SellerLogin />}>
-                        <Route index element={<AddProduct />} />
+                        <Route index element={< AddProduct />} />
                         <Route path="product-list" element={<ProductList />} />
                         <Route path="orders" element={<Orders />} />
                     </Route>
