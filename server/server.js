@@ -4,9 +4,11 @@ import cors from 'cors';
 import connectDB from './configs/db.js';
 import 'dotenv/config';
 
+
 const app = express();
 const port = process.env.PORT || 4000;
-
+import dns from 'dns';
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 await connectDB()
 
 // Allow multiple origins
