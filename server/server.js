@@ -2,7 +2,7 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
-import dns from 'dns';
+import dns from 'dns';                    //      ← comment kar do
 
 import connectDB from './configs/db.js';
 import connectCloudinary from './configs/cloudinary.js';
@@ -16,7 +16,7 @@ import orderRouter from './routes/orderRoute.js';
 
 import { stripeWebhooks } from './controllers/orderController.js';
 
-dns.setServers(['8.8.8.8', '8.8.4.4']);
+ dns.setServers(['8.8.8.8', '8.8.4.4']);    //      ← comment kar do
 
 const app = express();
 const port = process.env.PORT || 4000;
