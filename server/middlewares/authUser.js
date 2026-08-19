@@ -1,26 +1,40 @@
-import jwt from "jsonwebtoken"
+import jwt from 'jsonwebtoken';
 
 const authUser = async (req, res, next) => {
     const { token } = req.cookies;
 
     if (!token) {
-        return res.json({ success: false, message: 'Not Authorized' })
+        return res.status(401).json({
+            success: false,
+            message: 'Not Authorized',
+        });
     }
 
     try {
-        const tokenDecode = jwt.verify(token, process.env.JWT_SECRET)
+        const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
 
-        if (tokenDecode.id) {
-            req.body.userId = tokenDecode.id
-        } else {
-            return res.json({ success: false, message: 'Not Authorized' })
+        if (!tokenDecode.id) {
+            return res.status(401).json({
+                success: false,
+                message: 'Not Authorized',
+            });
         }
 
+        // Keep the authenticated identity separate from client-provided data.
+        req.userId = tokenDecode.id;
+
+        // Existing controllers in this project read userId from req.body.
+        // Initialize req.body for GET requests, where Express may leave it undefined.
+        req.body = req.body || {};
+        req.body.userId = req.userId;
+
         next();
-
     } catch (error) {
-        res.json({ success: false, message: error.message })
+        return res.status(401).json({
+            success: false,
+            message: error.message,
+        });
     }
-}
+};
 
-export default authUser
+export default authUser;
